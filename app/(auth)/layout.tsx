@@ -4,8 +4,8 @@ import { Inter } from "next/font/google"
 import '../globals.css';
 
 export const metadata = {
-    title: 'soshal',
-    description: 'soshal is a social media platform for the people',
+    title: 'sSōshal',
+    description: 'Sōshal is a social media platform for people',
 }
 
 const inter = Inter({ subsets: ["latin"] });

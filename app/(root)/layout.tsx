@@ -1,47 +1,43 @@
-import { ClerkProvider } from '@clerk/nextjs'
-import '../globals.css'
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import Topbar from '@/components/shared/Topbar'
-import LeftSidebar from '@/components/shared/LeftSidebar'
-import RightSidebar from '@/components/shared/RightSidebar'
-import Bottombar from '@/components/shared/Bottombar'
+import React from "react";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import { ClerkProvider } from "@clerk/nextjs";
 
-const inter = Inter({ 
-subsets: ['latin'] })
+import "../globals.css";
+import LeftSidebar from "@/components/shared/LeftSidebar";
+import Bottombar from "@/components/shared/Bottombar";
+import RightSidebar from "@/components/shared/RightSidebar";
+import Topbar from "@/components/shared/Topbar";
 
-export const metadata = {
-  title: 'Sōshal',
-  description: 'Sōshal is a social media platform for people',
-}
+const inter = Inter({ subsets: ["latin"] });
+
+export const metadata = { title: 'Sōshal',
+ description: 'Sōshal is a social media platform for people', }
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
-  <ClerkProvider>
-    <html lang="en">
-      <body className={inter.className}>
-        <Topbar />
+    <ClerkProvider
+    >
+      <html lang='en'>
+        <body className={inter.className}>
+          <Topbar />
 
-        <main>
-          <LeftSidebar />
+          <main className='flex flex-row'>
+            <LeftSidebar />
+            <section className='main-container'>
+              <div className='w-full max-w-4xl'>{children}</div>
+            </section>
+            {/* @ts-ignore */}
+            <RightSidebar />
+          </main>
 
-          <section className='main-container'>
-            <div className='w-full max-w-4xl'>
-            {children}
-            </div>
-          </section>
-
-
-          <RightSidebar />
-        </main>
-
-        <Bottombar />
-      </body>
-    </html>
-  </ClerkProvider>
-  )
+          <Bottombar />
+        </body>
+      </html>
+    </ClerkProvider>
+  );
 }
